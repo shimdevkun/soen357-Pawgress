@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pawgress</string>
+    <string name="home_start">Click to Start</string>
+    <string name="choose_pet">Choose a Pet</string>
+    <string name="submit">Submit</string>
+    <string name="pet_selector">Pet Selector</string>
+    <string name="pet_naming">Name Your Pet</string>
 </resources>
