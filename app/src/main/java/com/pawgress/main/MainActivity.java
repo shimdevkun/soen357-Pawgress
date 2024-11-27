@@ -3,8 +3,10 @@ package com.pawgress.main;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -75,5 +77,25 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragmentContainer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
+        TextView navTitle = findViewById(R.id.navTitle);
+        String fragmentTitle = "";
+        if (fragment instanceof ActiveTasksFragment) {
+            fragmentTitle = getString(R.string.active_tasks);
+        } else if (fragment instanceof DeadlinesFragment) {
+            fragmentTitle = getString(R.string.deadlines);
+        } else if (fragment instanceof CompletedTasksFragment) {
+            fragmentTitle = getString(R.string.completed_tasks);
+        } else if (fragment instanceof PetHubFragment) {
+            fragmentTitle = getString(R.string.pet_hub);
+        }
+        navTitle.setText(fragmentTitle);
+
+        ImageButton petIcon = findViewById(R.id.navPetHubIcon);
+        if (fragment instanceof PetHubFragment) {
+            petIcon.setVisibility(View.GONE);
+        } else {
+            petIcon.setVisibility(View.VISIBLE);
+        }
     }
 }
