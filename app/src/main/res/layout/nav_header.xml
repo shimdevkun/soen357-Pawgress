@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="16dp"
+    android:background="@color/gunmetal">
+
+    <TextView
+        android:id="@+id/navHeaderAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageButton
+        android:id="@+id/closeDrawer"
+        android:layout_centerVertical="true"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_close_small"
+        android:contentDescription="@string/close_drawer"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:tint="@color/white" />
+
+</RelativeLayout>

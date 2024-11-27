@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_active_tasks"
+        android:title="@string/active_tasks"/>
+    <item android:id="@+id/nav_deadlines"
+        android:title="@string/deadlines"/>
+    <item android:id="@+id/nav_completed_tasks"
+        android:title="@string/completed_tasks"/>
+    <item android:id="@+id/nav_pet_hub"
+        android:title="@string/pet_hub"/>
+</menu>

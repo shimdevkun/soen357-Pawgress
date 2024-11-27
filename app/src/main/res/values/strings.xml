@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Pawgress</string>
+    <string name="home_start">Click to Start</string>
+    <string name="choose_pet">Choose a Pet</string>
+    <string name="submit">Submit</string>
+    <string name="pet_selector">Pet Selector</string>
+    <string name="pet_naming">Name Your Pet</string>
+    <string name="active_tasks">Active Tasks</string>
+    <string name="deadlines">Deadlines</string>
+    <string name="completed_tasks">Completed Tasks</string>
+    <string name="pet_hub">Pet Hub</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="open_drawer">Open Drawer</string>
 </resources>
