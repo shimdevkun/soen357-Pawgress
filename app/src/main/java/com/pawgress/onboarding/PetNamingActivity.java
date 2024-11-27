@@ -1,5 +1,6 @@
 package com.pawgress.onboarding;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.pawgress.R;
+import com.pawgress.main.MainActivity;
 
 public class PetNamingActivity extends AppCompatActivity {
 
@@ -22,6 +24,9 @@ public class PetNamingActivity extends AppCompatActivity {
 
         Button btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(v -> {
+            Intent intent = new Intent(PetNamingActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
