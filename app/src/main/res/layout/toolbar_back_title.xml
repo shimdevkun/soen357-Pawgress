@@ -6,5 +6,12 @@
     android:background="@color/zomp"
     app:navigationIcon="@drawable/ic_arrow_back"
     app:navigationIconTint="@color/white"
-    app:titleTextColor="@color/white"
-    android:id="@+id/toolbarBackTitle"/>
+    android:id="@+id/toolbarBackTitle">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:textColor="@color/white"
+        android:id="@+id/toolbarTitle" />
+</androidx.appcompat.widget.Toolbar>
