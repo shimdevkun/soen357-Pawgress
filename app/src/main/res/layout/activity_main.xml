@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include
+            android:id="@+id/toolbarMain"
             layout="@layout/toolbar_menu" />
-
         <FrameLayout
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbarMain"/>
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -28,6 +29,4 @@
         app:itemTextColor="@color/white"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"/>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
