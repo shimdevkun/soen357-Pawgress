@@ -3,7 +3,21 @@
     <style name="Base.Theme.Pawgress" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorControlNormal">@color/white</item>
+        <item name="android:fontFamily">@font/roboto_font_family</item>
     </style>
 
     <style name="Theme.Pawgress" parent="Base.Theme.Pawgress" />
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="LabelStyle">
+        <item name="android:paddingStart">17dp</item>
+        <item name="android:paddingEnd">17dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/label_border</item>
+    </style>
 </resources>

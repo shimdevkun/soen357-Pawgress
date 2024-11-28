@@ -17,6 +17,11 @@ public class Subtask {
         this.name = name;
     }
 
+    public Subtask(Task task, String name, boolean done) {
+        this(task, name);
+        this.done = done;
+    }
+
     public int getId() {
         return id;
     }
