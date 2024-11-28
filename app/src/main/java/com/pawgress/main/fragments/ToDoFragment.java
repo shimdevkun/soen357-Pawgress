@@ -19,13 +19,11 @@ import java.util.List;
 
 public class ToDoFragment extends Fragment {
 
-    private RecyclerView toDoRecView;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_to_do, container, false);
 
-        toDoRecView = view.findViewById(R.id.toDoRecView);
+        RecyclerView toDoRecView = view.findViewById(R.id.toDoRecView);
         List<Task> toDoTasks = DataRepository.getInstance().getAllTasksByStatus(TaskStatus.TO_DO);
 
         ToDoRecViewAdapter adapter = new ToDoRecViewAdapter(getContext());

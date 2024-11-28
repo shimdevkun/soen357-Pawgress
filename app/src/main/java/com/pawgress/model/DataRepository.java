@@ -101,4 +101,11 @@ public class DataRepository {
             allTasks.remove(taskToRemove);
         }
     }
+
+    public void updateTaskStatus(int taskId, TaskStatus newStatus) {
+        Task task = getTaskById(taskId);
+        if (task != null) {
+            task.setStatus(newStatus);
+        }
+    }
 }

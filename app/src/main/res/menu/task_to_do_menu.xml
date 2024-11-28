@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actionStart"
+        android:icon="@drawable/ic_arrow_forward"
+        android:iconTint="@color/gunmetal"
+        android:title="@string/start" />
+    <item
+        android:id="@+id/actionDelete"
+        android:icon="@drawable/ic_delete"
+        android:iconTint="@color/gunmetal"
+        android:title="@string/delete" />
+</menu>
