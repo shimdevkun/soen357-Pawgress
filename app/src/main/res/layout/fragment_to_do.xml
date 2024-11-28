@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".main.fragments.ToDoFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/to_do" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/toDoRecView"
+        android:layout_margin="25dp"/>
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.pawgress.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task {
@@ -20,6 +21,7 @@ public class Task {
     }
     public Task() {
         this.id = getNextId();
+        this.subtasks = new ArrayList<>();
     }
 
     public int getId() {
@@ -88,5 +90,9 @@ public class Task {
 
     public void setSubtasks(List<Subtask> subtasks) {
         this.subtasks = subtasks;
+    }
+
+    public int getNbSubtasksDone() {
+        return (int) subtasks.stream().filter(Subtask::isDone).count();
     }
 }
