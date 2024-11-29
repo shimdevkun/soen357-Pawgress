@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.pawgress.R;
+import com.pawgress.main.adapters.ToDoRecViewAdapter;
 
 public class ActiveTasksFragment extends Fragment {
 
@@ -26,7 +27,8 @@ public class ActiveTasksFragment extends Fragment {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                int position = tab.getPosition();
+                viewPager.setCurrentItem(position);
             }
 
             @Override
