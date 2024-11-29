@@ -21,42 +21,40 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.ViewHolder> {
-
-    private List<Task> toDoTasks = new ArrayList<>();
+public class InProgressRecViewAdapter extends RecyclerView.Adapter<InProgressRecViewAdapter.ViewHolder> {
+    private List<Task> inProgTasks = new ArrayList<>();
     private final Context context;
 
-    public ToDoRecViewAdapter(Context context, List<Task> toDoTasks) {
+    public InProgressRecViewAdapter(Context context) {
         this.context = context;
-        this.toDoTasks = toDoTasks;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.to_do_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.in_progress_list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Task task = toDoTasks.get(position);
-        holder.toDoSubject.setText(task.getSubject());
+        Task task = inProgTasks.get(position);
+        holder.inProgSubject.setText(task.getSubject());
         String difficulty = context.getString(task.getDifficulty().getLabelResId());
-        holder.toDoDifficulty.setText(difficulty);
-        holder.toDoName.setText(task.getName());
+        holder.inProgDifficulty.setText(difficulty);
+        holder.inProgName.setText(task.getName());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM. d");
         String formattedDueDate = task.getDueDate().format(formatter);
-        holder.toDoDueDate.setText(formattedDueDate);
+        holder.inProgDueDate.setText(formattedDueDate);
 
         String substasksStats = task.getNbSubtasksDone() + "/" + task.getSubtasks().size();
-        holder.toDoSubtasksStats.setText(substasksStats);
+        holder.inProgSubtasksStats.setText(substasksStats);
 
-        holder.toDoActions.setOnClickListener(v -> {
+        holder.inProgActions.setOnClickListener(v -> {
             Context context = v.getContext();
-            PopupMenu popupMenu = new PopupMenu(context, holder.toDoActions);
-            popupMenu.inflate(R.menu.task_to_do_menu);
+            PopupMenu popupMenu = new PopupMenu(context, holder.inProgActions);
+            popupMenu.inflate(R.menu.task_in_progress_menu);
 
             // Force menu icons to be displayed
             try {
@@ -72,8 +70,12 @@ public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.
 
             popupMenu.setOnMenuItemClickListener(item -> {
                 int itemId = item.getItemId();
-                if (itemId == R.id.actionStart) {
-                    DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.IN_PROGRESS);
+                if (itemId == R.id.actionMarkCompleted) {
+                    DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.COMPLETED);
+                    updateRecViewTasks();
+                    return true;
+                } else if (itemId == R.id.actionBackToDo) {
+                    DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.TO_DO);
                     updateRecViewTasks();
                     return true;
                 } else if (itemId == R.id.actionDelete) {
@@ -106,30 +108,30 @@ public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.
 
     @Override
     public int getItemCount() {
-        return toDoTasks.size();
+        return inProgTasks.size();
     }
 
     public void updateRecViewTasks() {
-        this.toDoTasks = DataRepository.getInstance().getAllTasksByStatus(TaskStatus.TO_DO);
+        this.inProgTasks = DataRepository.getInstance().getAllTasksByStatus(TaskStatus.IN_PROGRESS);
         notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView toDoSubject;
-        private TextView toDoDifficulty;
-        private TextView toDoName;
-        private TextView toDoDueDate;
-        private TextView toDoSubtasksStats;
-        private ImageView toDoActions;
+        private TextView inProgSubject;
+        private TextView inProgDifficulty;
+        private TextView inProgName;
+        private TextView inProgDueDate;
+        private TextView inProgSubtasksStats;
+        private ImageView inProgActions;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            toDoName = itemView.findViewById(R.id.toDoName);
-            toDoSubject = itemView.findViewById(R.id.toDoSubject);
-            toDoDifficulty = itemView.findViewById(R.id.toDoDifficulty);
-            toDoDueDate = itemView.findViewById(R.id.toDoDueDate);
-            toDoSubtasksStats = itemView.findViewById(R.id.toDoSubtasksStats);
-            toDoActions = itemView.findViewById(R.id.toDoActions);
+            inProgName = itemView.findViewById(R.id.inProgName);
+            inProgSubject = itemView.findViewById(R.id.inProgSubject);
+            inProgDifficulty = itemView.findViewById(R.id.inProgDifficulty);
+            inProgDueDate = itemView.findViewById(R.id.inProgDueDate);
+            inProgSubtasksStats = itemView.findViewById(R.id.inProgSubtasksStats);
+            inProgActions = itemView.findViewById(R.id.inProgActions);
         }
     }
 }

@@ -62,7 +62,7 @@ public class DataRepository {
         progress2.setStatus(TaskStatus.IN_PROGRESS);
         progress2.setSubject("MATH 251");
         progress2.setDifficulty(TaskDifficulty.HARD);
-        progress2.setName("My Task 3 Name");
+        progress2.setName("My Task 4 Name");
         progress2.setDueDate(LocalDate.of(2025, 1, 6));
         progress2.getSubtasks().add(new Subtask(progress2, "Subtask 4-1"));
         progress2.getSubtasks().add(new Subtask(progress2, "Subtask 4-2", true));
