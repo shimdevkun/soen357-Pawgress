@@ -6,14 +6,44 @@
     tools:context=".onboarding.PetNamingActivity">
 
     <include
-        layout="@layout/toolbar_back_title" />
+        layout="@layout/toolbar_back_title"
+        android:id="@+id/toolbarBackTitle"/>
 
-    <Button
-        android:id="@+id/btnSubmit"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="@string/submit"
+        android:layout_below="@id/toolbarBackTitle"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:paddingTop="100dp">
+
+        <ImageView
+            android:id="@+id/pet_image"
+            android:layout_width="235dp"
+            android:layout_height="235dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/pet_hamster"
+            />
+
+        <EditText
+            android:id="@+id/pet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pet_image"
+            android:layout_centerHorizontal="true"
+            android:hint="Enter your pet's name here"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@string/submit"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/pet_name"
+            />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>
