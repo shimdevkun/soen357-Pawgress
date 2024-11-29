@@ -6,7 +6,19 @@
     tools:context=".onboarding.PetSelectorActivity">
 
     <include
-        layout="@layout/toolbar_back_title" />
+        layout="@layout/toolbar_back_title"
+        android:id="@+id/toolbar_selection"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_selection">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/pet_angry_bird"
+            />
+        </RelativeLayout>
 
     <Button
         android:id="@+id/btnChoosePet"
