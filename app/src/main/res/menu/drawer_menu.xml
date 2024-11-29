@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/nav_active_tasks"
+        android:icon="@drawable/ic_task"
         android:title="@string/active_tasks"/>
     <item android:id="@+id/nav_deadlines"
-        android:title="@string/deadlines"/>
+        android:icon="@drawable/ic_event_note"
+        android:title="@string/deadlines_soon"/>
     <item android:id="@+id/nav_completed_tasks"
-        android:title="@string/completed_tasks"/>
+        android:icon="@drawable/ic_task_alt"
+        android:title="@string/completed_tasks_soon"/>
     <item android:id="@+id/nav_pet_hub"
+        android:icon="@drawable/ic_pets"
         android:title="@string/pet_hub"/>
 </menu>
