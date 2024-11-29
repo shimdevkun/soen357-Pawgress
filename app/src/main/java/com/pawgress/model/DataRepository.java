@@ -68,6 +68,8 @@ public class DataRepository {
         progress2.getSubtasks().add(new Subtask(progress2, "Subtask 4-2", true));
         progress2.getSubtasks().add(new Subtask(progress2, "Subtask 4-3", true));
         allTasks.add(progress2);
+
+        userPet.setPetType(PetType.DOG);
     }
 
     public UserPet getUserPet() {
@@ -119,5 +121,9 @@ public class DataRepository {
                 }
             }
         }
+    }
+
+    public void updateUserPetStat(PetStat stat, int points) {
+        userPet.updateStat(stat, points);
     }
 }
