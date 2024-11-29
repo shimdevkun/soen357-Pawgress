@@ -108,4 +108,16 @@ public class DataRepository {
             task.setStatus(newStatus);
         }
     }
+
+    public void updateSubtask(int taskId, int subtaskId, boolean isDone) {
+        Task task = getTaskById(taskId);
+        if (task != null) {
+            for (Subtask subtask : task.getSubtasks()) {
+                if (subtask.getId() == subtaskId) {
+                    subtask.setDone(isDone);
+                    return;
+                }
+            }
+        }
+    }
 }

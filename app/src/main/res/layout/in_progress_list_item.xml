@@ -131,11 +131,13 @@
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/inProgSubtasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:paddingBottom="10dp"
         android:layout_below="@+id/inProgMain">
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginHorizontal="15dp"
             android:id="@+id/inProgSubtasksRecView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

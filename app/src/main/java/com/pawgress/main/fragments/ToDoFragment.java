@@ -11,11 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pawgress.R;
 import com.pawgress.main.adapters.ToDoRecViewAdapter;
-import com.pawgress.model.DataRepository;
-import com.pawgress.model.Task;
-import com.pawgress.model.TaskStatus;
-
-import java.util.List;
 
 public class ToDoFragment extends Fragment {
 
@@ -26,8 +21,7 @@ public class ToDoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_to_do, container, false);
 
         RecyclerView toDoRecView = view.findViewById(R.id.toDoRecView);
-        List<Task> toDoTasks = DataRepository.getInstance().getAllTasksByStatus(TaskStatus.TO_DO);
-        adapter = new ToDoRecViewAdapter(getContext(), toDoTasks);
+        adapter = new ToDoRecViewAdapter(getContext());
 
         toDoRecView.setAdapter(adapter);
         toDoRecView.setLayoutManager(new LinearLayoutManager(getContext()));

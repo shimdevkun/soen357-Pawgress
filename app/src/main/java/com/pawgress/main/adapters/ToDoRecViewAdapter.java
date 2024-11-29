@@ -18,17 +18,15 @@ import com.pawgress.model.Task;
 import com.pawgress.model.TaskStatus;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.ViewHolder> {
 
-    private List<Task> toDoTasks = new ArrayList<>();
+    private List<Task> toDoTasks;
     private final Context context;
 
-    public ToDoRecViewAdapter(Context context, List<Task> toDoTasks) {
+    public ToDoRecViewAdapter(Context context) {
         this.context = context;
-        this.toDoTasks = toDoTasks;
     }
 
     @NonNull
@@ -41,6 +39,11 @@ public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = toDoTasks.get(position);
+        bindTaskOverview(holder, task);
+        bindActionsMenu(holder, task);
+    }
+
+    private void bindTaskOverview(@NonNull ViewHolder holder, Task task) {
         holder.toDoSubject.setText(task.getSubject());
         String difficulty = context.getString(task.getDifficulty().getLabelResId());
         holder.toDoDifficulty.setText(difficulty);
@@ -52,55 +55,61 @@ public class ToDoRecViewAdapter extends RecyclerView.Adapter<ToDoRecViewAdapter.
 
         String substasksStats = task.getNbSubtasksDone() + "/" + task.getSubtasks().size();
         holder.toDoSubtasksStats.setText(substasksStats);
+    }
 
+    private void bindActionsMenu(@NonNull ViewHolder holder, Task task) {
         holder.toDoActions.setOnClickListener(v -> {
             Context context = v.getContext();
             PopupMenu popupMenu = new PopupMenu(context, holder.toDoActions);
             popupMenu.inflate(R.menu.task_to_do_menu);
-
-            // Force menu icons to be displayed
-            try {
-                java.lang.reflect.Field popup = popupMenu.getClass().getDeclaredField("mPopup");
-                popup.setAccessible(true);
-                Object menuPopupHelper = popup.get(popupMenu);
-                menuPopupHelper.getClass()
-                        .getDeclaredMethod("setForceShowIcon", boolean.class)
-                        .invoke(menuPopupHelper, true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            popupMenu.setOnMenuItemClickListener(item -> {
-                int itemId = item.getItemId();
-                if (itemId == R.id.actionStart) {
-                    DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.IN_PROGRESS);
-                    updateRecViewTasks();
-                    return true;
-                } else if (itemId == R.id.actionDelete) {
-
-                    String deleteTask = context.getString(R.string.deleteTask);
-                    String confirmDeleteTask = context.getString(R.string.confirm_delete_task);
-                    String actionYes = context.getString(R.string.action_yes);
-                    String actionCancel = context.getString(R.string.action_cancel);
-
-                    new AlertDialog.Builder(context)
-                            .setTitle(deleteTask)
-                            .setMessage(confirmDeleteTask)
-                            .setPositiveButton(actionYes, (dialog, which) -> {
-                                DataRepository.getInstance().removeTask(task.getId());
-                                updateRecViewTasks();
-                            })
-                            .setNegativeButton(actionCancel, (dialog, which) -> {
-                                dialog.dismiss();
-                            })
-                            .create()
-                            .show();
-                    return true;
-                }
-                return false;
-            });
-
+            forceMenuIconsDisplay(popupMenu);
+            bindActionsMenuOnClickListener(task, popupMenu, context);
             popupMenu.show();
+        });
+    }
+
+    private static void forceMenuIconsDisplay(PopupMenu popupMenu) {
+        try {
+            java.lang.reflect.Field popup = popupMenu.getClass().getDeclaredField("mPopup");
+            popup.setAccessible(true);
+            Object menuPopupHelper = popup.get(popupMenu);
+            menuPopupHelper.getClass()
+                    .getDeclaredMethod("setForceShowIcon", boolean.class)
+                    .invoke(menuPopupHelper, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void bindActionsMenuOnClickListener(Task task, PopupMenu popupMenu, Context context) {
+        popupMenu.setOnMenuItemClickListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.actionStart) {
+                DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.IN_PROGRESS);
+                updateRecViewTasks();
+                return true;
+            } else if (itemId == R.id.actionDelete) {
+
+                String deleteTask = context.getString(R.string.deleteTask);
+                String confirmDeleteTask = context.getString(R.string.confirm_delete_task);
+                String actionYes = context.getString(R.string.action_yes);
+                String actionCancel = context.getString(R.string.action_cancel);
+
+                new AlertDialog.Builder(context)
+                        .setTitle(deleteTask)
+                        .setMessage(confirmDeleteTask)
+                        .setPositiveButton(actionYes, (dialog, which) -> {
+                            DataRepository.getInstance().removeTask(task.getId());
+                            updateRecViewTasks();
+                        })
+                        .setNegativeButton(actionCancel, (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .create()
+                        .show();
+                return true;
+            }
+            return false;
         });
     }
 
