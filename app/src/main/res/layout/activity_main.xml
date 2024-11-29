@@ -27,6 +27,8 @@
         android:layout_gravity="start"
         android:background="@color/gunmetal"
         app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
         app:headerLayout="@layout/nav_header"
+        app:itemIconPadding="15dp"
         app:menu="@menu/drawer_menu"/>
 </androidx.drawerlayout.widget.DrawerLayout>
