@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.pawgress.R;
 import com.pawgress.main.MainActivity;
 import com.pawgress.model.DataRepository;
+import com.pawgress.model.PetType;
 
 import android.util.Log;
 
@@ -70,7 +71,6 @@ public class PetNamingActivity extends AppCompatActivity {
             // Log the entered pet name (or save it elsewhere)
             Log.d("PetNamingActivity", "Entered pet name: " + petName);
 
-            // Optionally, you can save the pet name using SharedPreferences or a database
             savePetName(petName);
 
             Intent intent = new Intent(PetNamingActivity.this, MainActivity.class);
