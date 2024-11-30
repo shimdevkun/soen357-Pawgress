@@ -10,7 +10,7 @@ public class DataRepository {
     private final UserPet userPet;
     private final List<Task> allTasks;
 
-    private DataRepository() {
+    public DataRepository() {
         userPet = new UserPet();
         allTasks = new ArrayList<>();
         initData();
@@ -91,6 +91,13 @@ public class DataRepository {
             }
         }
         return null;
+    }
+
+    public void updateTaskDifficulty(int taskId, TaskDifficulty difficulty) {
+        Task task = getTaskById(taskId);
+        if (task != null) {
+            task.setDifficulty(difficulty);
+        }
     }
 
     public void addTask(Task task) {

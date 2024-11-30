@@ -26,6 +26,9 @@
     <string name="action_yes">Yes</string>
     <string name="back_to_do">Back to To Do</string>
     <string name="mark_completed">Mark as Completed</string>
+    <string name="add_task">Add Task</string>
+    <string name="new_task">New Task</string>
+    <string name="save_changes">Save Changes</string>
     <string name="congrats_task_completion">Congratulations! You have completed the task!</string>
     <string name="health">Health</string>
     <string name="happiness">Happiness</string>
