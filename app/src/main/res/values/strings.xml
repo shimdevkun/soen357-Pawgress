@@ -31,4 +31,9 @@
     <string name="happiness">Happiness</string>
     <string name="satiety">Satiety</string>
     <string name="task_completion_message">You have earned +%1$d %2$s!</string>
+    <string name="choose_your_pet">Choose your pet</string>
+    <string name="bird">Bird</string>
+    <string name="cat">Cat</string>
+    <string name="dog">Dog</string>
+    <string name="hamster">Hamster</string>
 </resources>
