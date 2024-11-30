@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".onboarding.WelcomeActivity">
 
+    <ImageView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="270dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pet_name"
+        />
+
+    <ImageView
+        android:id="@+id/pet_house"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/name"
+        android:src="@drawable/pet_welcome"
+        />
+
     <Button
         android:id="@+id/btnHomeStart"
         android:layout_width="wrap_content"
@@ -12,5 +29,5 @@
         android:textAllCaps="false"
         android:text="@string/home_start"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_below="@+id/pet_house"/>
 </RelativeLayout>

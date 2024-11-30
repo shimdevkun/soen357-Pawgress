@@ -1,7 +1,5 @@
 package com.pawgress.model;
 
-import androidx.annotation.NonNull;
-
 import com.pawgress.R;
 
 public enum TaskDifficulty {

@@ -7,7 +7,9 @@
     <string name="pet_naming">Name Your Pet</string>
     <string name="active_tasks">Active Tasks</string>
     <string name="deadlines">Deadlines</string>
+    <string name="deadlines_soon">Deadlines (soon)</string>
     <string name="completed_tasks">Completed Tasks</string>
+    <string name="completed_tasks_soon">Completed Tasks (soon)</string>
     <string name="pet_hub">Pet Hub</string>
     <string name="close_drawer">Close Drawer</string>
     <string name="open_drawer">Open Drawer</string>
@@ -27,4 +29,14 @@
     <string name="add_task">Add Task</string>
     <string name="new_task">New Task</string>
     <string name="save_changes">Save Changes</string>
+    <string name="congrats_task_completion">Congratulations! You have completed the task!</string>
+    <string name="health">Health</string>
+    <string name="happiness">Happiness</string>
+    <string name="satiety">Satiety</string>
+    <string name="task_completion_message">You have earned +%1$d %2$s!</string>
+    <string name="choose_your_pet">Choose your pet</string>
+    <string name="bird">Bird</string>
+    <string name="cat">Cat</string>
+    <string name="dog">Dog</string>
+    <string name="hamster">Hamster</string>
 </resources>

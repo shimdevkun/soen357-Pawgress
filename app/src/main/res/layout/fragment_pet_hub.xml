@@ -1,15 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".main.fragments.PetHubFragment">
 
+    <!-- Pet Name -->
     <TextView
+        android:id="@+id/petName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:text="Pet Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/pet_hub" />
+        android:layout_marginTop="16dp" />
+
+    <!-- Pet Picture -->
+    <FrameLayout
+        android:id="@+id/petImageContainer"
+        android:layout_width="352dp"
+        android:layout_height="315dp"
+        android:layout_below="@id/petName"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ash_gray"
+        android:layout_marginTop="16dp">
+        <ImageView
+            android:id="@+id/petImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/healthLayout"
+        android:layout_below="@+id/petImageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="35dp">
+
+        <!-- Health Text -->
+        <TextView
+            android:id="@+id/healthLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Health"
+            android:textColor="@color/gunmetal" />
+
+        <!-- Health Percentage -->
+        <TextView
+            android:id="@+id/healthPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/healthLabel"
+            android:layout_marginStart="5dp"
+            android:layout_alignBaseline="@id/healthLabel"
+            android:text="(100%)"
+            android:textColor="@color/gunmetal"
+            android:textSize="14sp" />
+
+        <!-- Health Progress Bar -->
+        <ProgressBar
+            android:id="@+id/healthBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/healthIcon"
+            android:layout_below="@id/healthLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:progress="100" />
+
+        <!-- Health Icon -->
+        <ImageView
+            android:id="@+id/healthIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_favorite"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/gunmetal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/happinessLayout"
+        android:layout_below="@+id/healthLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginHorizontal="30dp">
+
+        <!-- Happiness Text -->
+        <TextView
+            android:id="@+id/happinessLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Happiness"
+            android:textColor="@color/gunmetal" />
+
+        <!-- Happiness Percentage -->
+        <TextView
+            android:id="@+id/happinessPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/happinessLabel"
+            android:layout_marginStart="5dp"
+            android:layout_alignBaseline="@id/happinessLabel"
+            android:text="(50%)"
+            android:textColor="@color/gunmetal"
+            android:textSize="14sp" />
+
+        <!-- Happiness Progress Bar -->
+        <ProgressBar
+            android:id="@+id/happinessBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/happinessIcon"
+            android:layout_below="@id/happinessLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:max="100"
+            android:progress="50" />
+
+        <!-- Happiness Icon -->
+        <ImageView
+            android:id="@+id/happinessIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_mood"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/gunmetal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/satietyLayout"
+        android:layout_below="@+id/happinessLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginHorizontal="30dp">
+
+        <!-- Satiety Text -->
+        <TextView
+            android:id="@+id/satietyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Satiety"
+            android:textColor="@color/gunmetal" />
+
+        <!-- Satiety Percentage -->
+        <TextView
+            android:id="@+id/satietyPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/satietyLabel"
+            android:layout_marginStart="5dp"
+            android:layout_alignBaseline="@id/satietyLabel"
+            android:text="(40%)"
+            android:textColor="@color/gunmetal"
+            android:textSize="14sp" />
+
+        <!-- Satiety Progress Bar -->
+        <ProgressBar
+            android:id="@+id/satietyBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/satietyIcon"
+            android:layout_below="@id/satietyLabel"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:max="100"
+            android:progress="40" />
+
+        <!-- Satiety Icon -->
+        <ImageView
+            android:id="@+id/satietyIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_grocery"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/gunmetal" />
+    </RelativeLayout>
+
 
 </RelativeLayout>
