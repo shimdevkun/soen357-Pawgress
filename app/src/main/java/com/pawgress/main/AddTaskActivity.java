@@ -1,7 +1,9 @@
 package com.pawgress.main;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,18 +23,25 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.pawgress.R;
 import com.pawgress.model.DataRepository;
+import com.pawgress.model.Subtask;
 import com.pawgress.model.Task;
 import com.pawgress.model.TaskDifficulty;
+import com.pawgress.model.TaskStatus;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 public class AddTaskActivity extends AppCompatActivity {
     private EditText taskNameEditText;
     private TextView taskDueDate;
-    private EditText taskDescriptionEditText;
+    private EditText editSubject;
     private RadioGroup difficultyGroup;
     private DataRepository dataRepository;
+    private TextView subtask1;
+    private TextView subtask2;
+    private TextView subtask3;
     private int currentTaskId;
 
     @Override
@@ -44,11 +53,11 @@ public class AddTaskActivity extends AppCompatActivity {
 
         taskNameEditText = findViewById(R.id.editTaskName);
         taskDueDate = findViewById(R.id.taskDueDate);
-        taskDescriptionEditText = findViewById(R.id.editDescription); // Assuming there's an EditText for description
+        editSubject = findViewById(R.id.editSubject); // Assuming there's an EditText for description
         difficultyGroup = findViewById(R.id.optionsDiff);
-
-        // Initialize DataRepository
-        dataRepository = DataRepository.getInstance(); // Use the singleton instance
+        subtask1 = findViewById(R.id.subtask1);
+        subtask2 = findViewById(R.id.subtask2);
+        subtask3 = findViewById(R.id.subtask3);
 
         taskDueDate.setOnClickListener(v -> showDatePicker());
 
@@ -75,21 +84,48 @@ public class AddTaskActivity extends AppCompatActivity {
         // Get the due date
         String dueDate = taskDueDate.getText().toString();
 
+        // Parse the due date
+        LocalDate parsedDate = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        try {
+            parsedDate = LocalDate.parse(dueDate, formatter);
+        } catch (DateTimeParseException e) {
+            Toast.makeText(this, "Invalid date format. Please use dd/MM/yyyy.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Get the task description
-        String description = taskDescriptionEditText.getText().toString();
+        String subject = editSubject.getText().toString();
 
         // Create a new Task object
         Task newTask = new Task();
         newTask.setName(taskName);
         newTask.setDifficulty(difficulty);
-        newTask.setDueDate(LocalDate.parse(dueDate)); // Store it as a String, or convert it to a Date object if needed
-        newTask.setDescription(description);
+        newTask.setDueDate(parsedDate); // Store it as a String, or convert it to a Date object if needed
+        newTask.setSubject(subject);
+        newTask.setStatus(TaskStatus.TO_DO);
+
+        // Save subtasks
+        String name1 = subtask1.getText().toString();
+        if (!TextUtils.isEmpty(name1)) {
+            newTask.getSubtasks().add(new Subtask(newTask, name1));
+        }
+        String name2 = subtask2.getText().toString();
+        if (!TextUtils.isEmpty(name2)) {
+            newTask.getSubtasks().add(new Subtask(newTask, name2));
+        }
+        String name3 = subtask3.getText().toString();
+        if (!TextUtils.isEmpty(name3)) {
+            newTask.getSubtasks().add(new Subtask(newTask, name3));
+        }
 
         // Save the task in the DataRepository
-        dataRepository.addTask(newTask);
+        DataRepository.getInstance().addTask(newTask);
 
         // Show a success message
         Toast.makeText(this, "Task saved successfully!", Toast.LENGTH_SHORT).show();
+
+        finish();
     }
 
     private void setupToolbar() {

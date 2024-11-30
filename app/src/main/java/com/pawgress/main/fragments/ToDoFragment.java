@@ -31,6 +31,8 @@ public class ToDoFragment extends Fragment {
         toDoRecView.setAdapter(adapter);
         toDoRecView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        adapter.updateRecViewTasks();
+
         Button addButton = view.findViewById(R.id.AddButton);
         addButton.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AddTaskActivity.class);

@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbarBackTitle"
         android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="30dp"
         android:text="Task Name"
         android:textColor="@color/gunmetal"
         android:textSize="20sp"
@@ -43,15 +43,50 @@
             android:background="@android:drawable/edit_text"/>
     </RelativeLayout>
 
+    <!-- Subject TextView and EditText -->
+    <TextView
+        android:id="@+id/taskSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailsTaskName"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:text="Subject"
+        android:textColor="@color/gunmetal"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/detailsSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskSubject"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/editSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter subject"
+            android:inputType="text"
+            android:textColorHint="#A9A9A9"
+            android:background="@android:drawable/edit_text"/>
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/taskDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/detailsTaskName"
-        android:layout_marginTop="17dp"
+        android:layout_below="@+id/detailsSubject"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
         android:text="Difficulty"
         android:textColor="@color/gunmetal"
         android:textSize="20sp"
@@ -62,8 +97,8 @@
         android:layout_below="@id/taskDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="85dp"
-        android:paddingTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -107,8 +142,7 @@
                 android:buttonTint="@color/black"
                 android:paddingEnd="16dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                />
+                android:paddingBottom="8dp"/>
 
         </RadioGroup>
 
@@ -119,11 +153,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/optionsDifficulty"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="Due"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:text="Due Date"
         android:textColor="@color/gunmetal"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -142,35 +176,54 @@
         android:textColor="@color/gunmetal" />
 
     <TextView
-        android:id="@+id/taskDescription"
+        android:id="@+id/subtasksSection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/taskDueDate"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="Description"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:text="Subtasks"
         android:textColor="@color/gunmetal"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <RelativeLayout
-        android:id="@+id/detailsDescription"
+        android:id="@+id/subTasksLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/taskDescription"
+        android:layout_below="@+id/subtasksSection"
         android:orientation="horizontal"
-        android:paddingLeft="30dp"
+        android:paddingHorizontal="30dp"
         android:paddingTop="10dp">
-
         <EditText
-            android:id="@+id/editDescription"
-            android:layout_width="wrap_content"
+            android:id="@+id/subtask1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:hint="Enter Description"
+            android:hint="Subtask 1"
+            android:textColorHint="#A9A9A9"
+            android:background="@android:drawable/edit_text"/>
+        <EditText
+            android:id="@+id/subtask2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Subtask 2"
+            android:layout_below="@+id/subtask1"
+            android:textColorHint="#A9A9A9"
+            android:background="@android:drawable/edit_text"/>
+        <EditText
+            android:id="@+id/subtask3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Subtask 3"
+            android:layout_below="@+id/subtask2"
             android:textColorHint="#A9A9A9"
             android:background="@android:drawable/edit_text"/>
     </RelativeLayout>
