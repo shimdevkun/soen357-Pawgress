@@ -6,8 +6,10 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,15 +19,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pawgress.R;
 import com.pawgress.model.DataRepository;
+import com.pawgress.model.PetStat;
 import com.pawgress.model.Subtask;
 import com.pawgress.model.Task;
 import com.pawgress.model.TaskStatus;
+import com.pawgress.model.UserPet;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InProgressRecViewAdapter extends RecyclerView.Adapter<InProgressRecViewAdapter.ViewHolder> {
+    private static final int defaultPoints = 15;
     private List<Task> inProgTasks = new ArrayList<>();
     private SparseBooleanArray expandedState = new SparseBooleanArray();
     private final Context context;
@@ -93,6 +98,10 @@ public class InProgressRecViewAdapter extends RecyclerView.Adapter<InProgressRec
             if (itemId == R.id.actionMarkCompleted) {
                 DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.COMPLETED);
                 updateRecViewTasks();
+
+                PetStat statToUpdate = getStatToUpdate(task);
+                DataRepository.getInstance().updateUserPetStat(statToUpdate, defaultPoints);
+                showTaskCompletionDialog(statToUpdate);
                 return true;
             } else if (itemId == R.id.actionBackToDo) {
                 DataRepository.getInstance().updateTaskStatus(task.getId(), TaskStatus.TO_DO);
@@ -120,6 +129,41 @@ public class InProgressRecViewAdapter extends RecyclerView.Adapter<InProgressRec
             }
             return false;
         });
+    }
+
+    private PetStat getStatToUpdate(Task task) {
+        switch (task.getDifficulty()) {
+            case EASY:
+                return PetStat.HAPPINESS;
+            case MEDIUM:
+                return PetStat.SATIETY;
+            default: // HARD
+                return PetStat.HEALTH;
+        }
+    }
+
+    private void showTaskCompletionDialog(PetStat stat) {
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_task_completion, null);
+        ImageView petImage = dialogView.findViewById(R.id.petImage);
+        TextView dialogText = dialogView.findViewById(R.id.dialogText);
+        ProgressBar dialogProgressBar = dialogView.findViewById(R.id.dialogProgressBar);
+        Button btnContinue = dialogView.findViewById(R.id.btnContinue);
+
+        UserPet userPet = DataRepository.getInstance().getUserPet();
+        petImage.setImageResource(userPet.getPetType().getHappyResId());
+
+        String statName = context.getString(stat.getLabelResId());
+        String message = context.getString(R.string.task_completion_message, defaultPoints, statName);
+        dialogText.setText(message);
+
+        int percentage = userPet.getStat(stat);
+        dialogProgressBar.setProgress(percentage);
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(dialogView)
+                .create();
+        btnContinue.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
     private void bindSubtasksToggleState(@NonNull ViewHolder holder, int position, Task task) {

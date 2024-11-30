@@ -61,7 +61,7 @@ public class PetSelectorActivity extends AppCompatActivity {
     }
 
     private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbarBackTitle);
+        Toolbar toolbar = findViewById(R.id.toolbar_selection);
         TextView toolbarTitle = toolbar.findViewById(R.id.toolbarTitle);
         toolbarTitle.setText(R.string.pet_selector);
         setSupportActionBar(toolbar);
