@@ -7,6 +7,7 @@
 
     <include
         layout="@layout/toolbar_back_title"
+        android:id="@+id/toolbar_selection"
         />
     <RelativeLayout
         android:layout_width="wrap_content"
