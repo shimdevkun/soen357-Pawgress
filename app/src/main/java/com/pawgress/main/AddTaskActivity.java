@@ -3,7 +3,12 @@ package com.pawgress.main;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,11 +20,20 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.pawgress.R;
+import com.pawgress.model.DataRepository;
+import com.pawgress.model.Task;
+import com.pawgress.model.TaskDifficulty;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class AddTaskActivity extends AppCompatActivity {
+    private EditText taskNameEditText;
     private TextView taskDueDate;
+    private EditText taskDescriptionEditText;
+    private RadioGroup difficultyGroup;
+    private DataRepository dataRepository;
+    private int currentTaskId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +42,54 @@ public class AddTaskActivity extends AppCompatActivity {
 
         setupToolbar();
 
+        taskNameEditText = findViewById(R.id.editTaskName);
         taskDueDate = findViewById(R.id.taskDueDate);
+        taskDescriptionEditText = findViewById(R.id.editDescription); // Assuming there's an EditText for description
+        difficultyGroup = findViewById(R.id.optionsDiff);
+
+        // Initialize DataRepository
+        dataRepository = DataRepository.getInstance(); // Use the singleton instance
 
         taskDueDate.setOnClickListener(v -> showDatePicker());
 
+        Button saveButton = findViewById(R.id.saveChanges);
+        saveButton.setOnClickListener(v -> saveTask());
+    }
+
+    private void saveTask() {
+        // Get the task name from the EditText
+        String taskName = taskNameEditText.getText().toString();
+
+        // Get the selected RadioButton's ID
+        int selectedRadioButtonId = difficultyGroup.getCheckedRadioButtonId();
+        TaskDifficulty difficulty = TaskDifficulty.MEDIUM; // Default to MEDIUM
+
+        if (selectedRadioButtonId == R.id.easyDifficulty) {
+            difficulty = TaskDifficulty.EASY;
+        } else if (selectedRadioButtonId == R.id.mediumDifficulty) {
+            difficulty = TaskDifficulty.MEDIUM;
+        } else if (selectedRadioButtonId == R.id.hardDifficulty) {
+            difficulty = TaskDifficulty.HARD;
+        }
+
+        // Get the due date
+        String dueDate = taskDueDate.getText().toString();
+
+        // Get the task description
+        String description = taskDescriptionEditText.getText().toString();
+
+        // Create a new Task object
+        Task newTask = new Task();
+        newTask.setName(taskName);
+        newTask.setDifficulty(difficulty);
+        newTask.setDueDate(LocalDate.parse(dueDate)); // Store it as a String, or convert it to a Date object if needed
+        newTask.setDescription(description);
+
+        // Save the task in the DataRepository
+        dataRepository.addTask(newTask);
+
+        // Show a success message
+        Toast.makeText(this, "Task saved successfully!", Toast.LENGTH_SHORT).show();
     }
 
     private void setupToolbar() {
@@ -74,6 +132,4 @@ public class AddTaskActivity extends AppCompatActivity {
                 year, month, day);
         datePickerDialog.show();
     }
-
-
 }
