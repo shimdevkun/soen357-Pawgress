@@ -75,4 +75,29 @@ public class UserPet {
         }
         return 0;
     }
+
+    public String getPercentageStat(PetStat stat) {
+        return "(" + getStat(stat) + "%)";
+    }
+
+    /**
+     * If health is 0, the dead resource is returned.
+     * If happiness is <= 15, the sad resource is returned.
+     * If satiety is <= 15, then angry resource is returned.
+     * If all stats are >= 50, then normal resource is returned.
+     * Otherwise, happy resource is returned.
+     * @return
+     */
+    public int getResourceBasedOnStats() {
+        if (this.health == 0) {
+            return petType.getDeadResId();
+        } else if (this.happiness <= 15) {
+            return petType.getSadResId();
+        } else if (this.satiety <= 15) {
+            return petType.getAngryResId();
+        } else if (this.health >= 50 && this.happiness >= 50 && this.satiety >= 50) {
+            return petType.getHappyResId();
+        }
+        return petType.getNormalResId();
+    }
 }

@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.pawgress.R;
+import com.pawgress.model.DataRepository;
+import com.pawgress.model.PetType;
 
 public class PetSelectorActivity extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class PetSelectorActivity extends AppCompatActivity {
 
         Button btnChooseHamster = findViewById(R.id.btnChooseHamster);
         btnChooseHamster.setOnClickListener(v -> {
+            DataRepository.getInstance().getUserPet().setPetType(PetType.HAMSTER);
             Intent intent = new Intent(PetSelectorActivity.this, PetNamingActivity.class);
             intent.putExtra("petType", "hamster");  // Add extra data
             startActivity(intent);
@@ -31,6 +34,7 @@ public class PetSelectorActivity extends AppCompatActivity {
 
         Button btnChooseDog = findViewById(R.id.btnChooseDog);
         btnChooseDog.setOnClickListener(v -> {
+            DataRepository.getInstance().getUserPet().setPetType(PetType.DOG);
             Intent intent = new Intent(PetSelectorActivity.this, PetNamingActivity.class);
             intent.putExtra("petType", "dog");  // Add extra data
             startActivity(intent);
@@ -38,6 +42,7 @@ public class PetSelectorActivity extends AppCompatActivity {
 
         Button btnChooseBird = findViewById(R.id.btnChooseBird);
         btnChooseBird.setOnClickListener(v -> {
+            DataRepository.getInstance().getUserPet().setPetType(PetType.BIRD);
             Intent intent = new Intent(PetSelectorActivity.this, PetNamingActivity.class);
             intent.putExtra("petType", "bird");  // Add extra data
             startActivity(intent);
@@ -45,19 +50,11 @@ public class PetSelectorActivity extends AppCompatActivity {
 
         Button btnChooseCat = findViewById(R.id.btnChooseCat);
         btnChooseCat.setOnClickListener(v -> {
+            DataRepository.getInstance().getUserPet().setPetType(PetType.CAT);
             Intent intent = new Intent(PetSelectorActivity.this, PetNamingActivity.class);
             intent.putExtra("petType", "cat");  // Add extra data
             startActivity(intent);
         });
-
-
-
-
-//        Button btnChoosePet = findViewById(R.id.btnChoosePet);
-//        btnChoosePet.setOnClickListener(v -> {
-//            Intent intent = new Intent(PetSelectorActivity.this, PetNamingActivity.class);
-//            startActivity(intent);
-//        });
     }
 
     private void setupToolbar() {
