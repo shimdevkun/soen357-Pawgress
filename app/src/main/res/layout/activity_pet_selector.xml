@@ -7,25 +7,122 @@
 
     <include
         layout="@layout/toolbar_back_title"
-        android:id="@+id/toolbar_selection"/>
+        android:id="@+id/toolbar_selection"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar_selection">
+        android:paddingLeft="200dp"
+        android:paddingTop="450dp"
+        >
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/pet_angry_bird"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/pet_cat"
+            android:contentDescription="@string/cat"
             />
         </RelativeLayout>
 
-    <Button
-        android:id="@+id/btnChoosePet"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="450dp"
+        android:paddingLeft="10dp"
+        >
+
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:src="@drawable/pet_bird"
+            android:contentDescription="@string/bird"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="110dp"
+        android:paddingStart="200dp"
+        >
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:src="@drawable/pet_dog"
+            android:contentDescription="@string/dog"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="100dp"
+       >
+
+
+        <ImageView
+            android:id="@+id/select_hamster"
+            android:layout_width="235dp"
+            android:layout_height="235dp"
+            android:src="@drawable/pet_hamster"
+            android:contentDescription="@string/hamster"
+            />
+
+
+    </RelativeLayout>
+    <Button
+
+        android:id="@+id/btnChooseHamster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hamster"
         android:textAllCaps="false"
-        android:text="@string/choose_pet"
+        android:translationY="300dp"
+        android:translationX="70dp"/>
+    <Button
+
+        android:id="@+id/btnChooseDog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dog"
+        android:textAllCaps="false"
+        android:translationY="300dp"
+        android:translationX="250dp"/>
+
+    <Button
+
+        android:id="@+id/btnChooseCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cat"
+        android:textAllCaps="false"
+        android:translationY="650dp"
+        android:translationX="250dp"/>
+
+    <Button
+
+        android:id="@+id/btnChooseBird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bird"
+        android:textAllCaps="false"
+        android:translationY="650dp"
+        android:translationX="70dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:text="@string/choose_your_pet"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/btnChoosePet"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:text="@string/choose_pet"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"/>-->
 </RelativeLayout>
