@@ -24,4 +24,7 @@
     <string name="action_yes">Yes</string>
     <string name="back_to_do">Back to To Do</string>
     <string name="mark_completed">Mark as Completed</string>
+    <string name="add_task">Add Task</string>
+    <string name="new_task">New Task</string>
+    <string name="save_changes">Save Changes</string>
 </resources>

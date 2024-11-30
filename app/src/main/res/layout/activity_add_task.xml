@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addtask"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.AddTaskActivity">
+
+    <include
+        layout="@layout/toolbar_back_title" />
+
+    <TextView
+        android:id="@+id/taskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarBackTitle"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="Task Name"
+        android:textColor="@color/gunmetal"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:id="@+id/detailsTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskName"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/editTaskName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter task name"
+            android:inputType="text"
+            android:textColorHint="#A9A9A9"
+            android:background="@android:drawable/edit_text"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/taskDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailsTaskName"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="Difficulty"
+        android:textColor="@color/gunmetal"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/optionsDifficulty"
+        android:layout_below="@id/taskDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="85dp"
+        android:paddingTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/easyDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_button_label1"
+                android:text="Easy"
+                android:buttonTint="@color/black"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                />
+
+            <RadioButton
+                android:id="@+id/mediumDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_button_label2"
+                android:text="Medium"
+                android:buttonTint="@color/black"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                />
+
+            <RadioButton
+                android:id="@+id/hardDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_button_label3"
+                android:text="Hard"
+                android:buttonTint="@color/black"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/taskDue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/optionsDifficulty"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="Due"
+        android:textColor="@color/gunmetal"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/taskDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskDue"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:hint="mm/dd/yyyy"
+        android:layout_alignLeft="@id/taskDue"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/gunmetal" />
+
+    <TextView
+        android:id="@+id/taskDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskDueDate"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="Description"
+        android:textColor="@color/gunmetal"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/detailsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/taskDescription"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Enter Description"
+            android:textColorHint="#A9A9A9"
+            android:background="@android:drawable/edit_text"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        android:text="@string/save_changes" />
+
+</RelativeLayout>
